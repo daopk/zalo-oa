@@ -1,6 +1,6 @@
 {
   "name": "zalo-oa",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "exports": {
     ".": {
@@ -13,6 +13,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daopk/zalo-oa.git"
+  },
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
