@@ -12,7 +12,7 @@ export async function sendPromotionMessage(access_token: string, user_id: string
     },
   }
 
-  return zfetch<SendMessageResponse>('sendmessage', {
+  return zfetch<SendMessageResponse>('promotion', {
     method: 'POST',
     baseURL: baseUrlV3,
     data: body,
