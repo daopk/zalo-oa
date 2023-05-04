@@ -20,11 +20,14 @@
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && npm publish"
   },
   "devDependencies": {
     "@daopk/eslint-config-ts": "^0.3.1",
     "axios": "^1.4.0",
+    "bumpp": "^9.1.0",
     "eslint": "^8.39.0",
     "https-proxy-agent": "^5.0.1",
     "ohash": "^1.1.2",
