@@ -1,4 +1,4 @@
-interface ZaloOAMediaTemplatePayloadElement {
+export interface ZaloOAMediaTemplatePayloadElement {
   media_type: string
   url?: string
   attachment_id?: string
