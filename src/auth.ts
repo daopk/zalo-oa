@@ -7,7 +7,7 @@ const baseURL = 'https://oauth.zaloapp.com/v4/oa'
 export function getAccessToken(secret_key: string, body: GetAccessTokenBody) {
   return zfetch<GetAccessTokenResponse>('access_token', {
     method: 'POST',
-    data: body,
+    data: new URLSearchParams({ ...body }).toString(),
     baseURL,
     headers: { secret_key },
   })
