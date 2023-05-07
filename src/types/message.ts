@@ -4,7 +4,7 @@ export interface ZaloOAMediaTemplatePayloadElement {
   attachment_id?: string
 }
 
-type ZaloOAListTemplatePayloadElementAction = {
+export type ZaloOAListTemplatePayloadElementAction = {
   type: 'oa.open.url'
   url: string
 } | {
