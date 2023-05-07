@@ -1,11 +1,15 @@
 {
   "name": "zalo-oa",
-  "version": "0.1.5",
   "type": "module",
+  "version": "0.1.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daopk/zalo-oa.git"
+  },
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
     }
   },
   "main": "dist/index.cjs",
@@ -13,10 +17,6 @@
   "files": [
     "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/daopk/zalo-oa.git"
-  },
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
@@ -24,8 +24,12 @@
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
+  "peerDependencies": {
+    "axios": "*",
+    "https-proxy-agent": "*"
+  },
   "devDependencies": {
-    "@daopk/eslint-config-ts": "^0.3.1",
+    "@daopk/eslint-config-ts": "^0.3.2",
     "axios": "^1.4.0",
     "bumpp": "^9.1.0",
     "eslint": "^8.39.0",
@@ -33,9 +37,5 @@
     "ohash": "^1.1.2",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1"
-  },
-  "peerDependencies": {
-    "axios": "*",
-    "https-proxy-agent": "*"
   }
 }
