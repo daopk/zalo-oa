@@ -4,7 +4,15 @@ import type { ZNSTemplateInfo } from './types/zns'
 
 const baseURL = 'https://business.openapi.zalo.me'
 
-export async function getTemplateInfo(access_token: string, templateId: string | number) {
+/**
+ * Get ZNS template info
+ * @deprecated use `getZNSTemplateInfo` instead. This function will be removed in the next major version
+ */
+export function getTemplateInfo(access_token: string, templateId: string | number) {
+  return getZNSTemplateInfo(access_token, templateId)
+}
+
+export async function getZNSTemplateInfo(access_token: string, templateId: string | number) {
   const data = await zfetch<ZNSTemplateInfoResponse>('template/info', {
     baseURL,
     params: {
@@ -23,7 +31,19 @@ export async function getTemplateInfo(access_token: string, templateId: string |
   return null
 }
 
-export async function sendTemplateMessage(
+/**
+ * @deprecated use `sendZNSTemplateMessage` instead. This function will be removed in the next major version
+ */
+export function sendTemplateMessage(access_token: string,
+  phone: string,
+  template_id: string | number,
+  template_data: Record<string, any> = {},
+  tracking_id?: string,
+  production = false) {
+  return sendZNSTemplateMessage(access_token, phone, template_id, template_data, tracking_id, production)
+}
+
+export async function sendZNSTemplateMessage(
   access_token: string,
   phone: string,
   template_id: string | number,
