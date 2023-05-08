@@ -89,11 +89,11 @@ export type ZaloOAPromotionTemplatePayloadElement = {
   align?: 'left' | 'center' | 'right'
 } | {
   type: 'table'
-  content: { key: string; value: string }[]
+  content: ({ key: string; value: string } | { key: 'Trạng thái' | 'Status'; value: string; style?: 'green' | 'blue' | 'yellow' | 'red' | 'grey' })[]
 }
 
 export type ZaloOAPromotionTemplatePayloadButton = ZaloOAButtonTemplatePayloadElement & {
-  image_icon: string
+  image_icon?: string
 }
 
 export interface ZaloOAPromotionTemplatePayload {
@@ -101,6 +101,31 @@ export interface ZaloOAPromotionTemplatePayload {
   language?: 'VI' | 'EN'
   elements: ZaloOAPromotionTemplatePayloadElement[]
   buttons?: ZaloOAPromotionTemplatePayloadButton[]
+}
+
+export type ZaloOATransactionTemplatePayloadElement =
+  ZaloOAPromotionTemplatePayloadElement
+export type ZaloOATransactionTemplatePayloadButton =
+  ZaloOAPromotionTemplatePayloadButton
+
+export interface ZaloOATransactionTemplatePayload {
+  template_type:
+  | 'transaction_billing'
+  | 'transaction_order'
+  | 'transaction_reward'
+  | 'transaction_contract'
+  | 'transaction_booking'
+  | 'transaction_membership'
+  | 'transaction_event'
+  | 'transaction_transation'
+  | 'transaction_account'
+  | 'transaction_internal'
+  | 'transaction_partnership'
+  | 'transaction_education'
+  | 'transaction_rating'
+  language?: 'VI' | 'EN'
+  elements: ZaloOATransactionTemplatePayloadElement[]
+  buttons?: ZaloOATransactionTemplatePayloadButton[]
 }
 
 export type ZaloOATemplatePayload = ZaloOAMediaTemplatePayload | ZaloOAListTemplatePayload | ZaloOAButtonTemplatePayload
@@ -113,6 +138,11 @@ export interface ZaloOATemplateAttachment {
 export interface ZaloOAPromotionTemplate {
   type: 'template'
   payload: ZaloOAPromotionTemplatePayload
+}
+
+export interface ZaloOATransactionTemplate {
+  type: 'template'
+  payload: ZaloOATransactionTemplatePayload
 }
 
 export interface ZaloOAFileAttachment {
