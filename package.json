@@ -26,7 +26,8 @@
   },
   "peerDependencies": {
     "axios": "*",
-    "https-proxy-agent": "*"
+    "https-proxy-agent": "*",
+    "ohash": "*"
   },
   "devDependencies": {
     "@daopk/eslint-config-ts": "^0.3.2",
