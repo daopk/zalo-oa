@@ -1,5 +1,5 @@
 import { zfetch } from './zfetch'
-import type { ZaloOAAttachment, ZaloOAPromotionTemplate } from './types/message'
+import type { ZaloOAAttachment, ZaloOAPromotionTemplate, ZaloOATransactionTemplate } from './types/message'
 import type { SendMessageResponse } from './types/response'
 
 const baseUrlV3 = 'https://openapi.zalo.me/v3.0/oa/message'
@@ -13,6 +13,22 @@ export async function sendPromotionMessage(access_token: string, user_id: string
   }
 
   return zfetch<SendMessageResponse>('promotion', {
+    method: 'POST',
+    baseURL: baseUrlV3,
+    data: body,
+    headers: { access_token },
+  })
+}
+
+export async function sendTransactionMessage(access_token: string, user_id: string, attachment: ZaloOATransactionTemplate) {
+  const body = {
+    recipient: { user_id },
+    message: {
+      attachment,
+    },
+  }
+
+  return zfetch<SendMessageResponse>('transaction', {
     method: 'POST',
     baseURL: baseUrlV3,
     data: body,
@@ -37,5 +53,3 @@ export async function sendCSMessage(access_token: string, user_id: string, messa
     headers: { access_token },
   })
 }
-
-// TODO: sendTransactionMessage
