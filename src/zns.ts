@@ -1,6 +1,5 @@
 import { zfetch } from './zfetch'
 import type { ZNSMessageTemplateResponse, ZNSTemplateInfoResponse } from './types/response'
-import type { ZNSTemplateInfo } from './types/zns'
 
 const baseURL = 'https://business.openapi.zalo.me'
 
@@ -13,7 +12,7 @@ export function getTemplateInfo(access_token: string, templateId: string | numbe
 }
 
 export async function getZNSTemplateInfo(access_token: string, templateId: string | number) {
-  const data = await zfetch<ZNSTemplateInfoResponse>('template/info', {
+  return zfetch<ZNSTemplateInfoResponse>('template/info', {
     baseURL,
     params: {
       template_id: templateId,
@@ -22,13 +21,6 @@ export async function getZNSTemplateInfo(access_token: string, templateId: strin
       access_token,
     },
   })
-  if (data?.error === 0)
-    return data.data as ZNSTemplateInfo
-  else
-  // eslint-disable-next-line no-console
-    console.log('getTemplateInfo::error', data)
-
-  return null
 }
 
 /**
@@ -61,18 +53,10 @@ export async function sendZNSTemplateMessage(
   if (!production)
     body.mode = 'development'
 
-  const data = await zfetch<ZNSMessageTemplateResponse>('message/template', {
+  return zfetch<ZNSMessageTemplateResponse>('message/template', {
     baseURL,
     method: 'POST',
     data: body,
     headers: { access_token },
   })
-
-  if (data?.error === 0)
-    return data.data
-  else
-    // eslint-disable-next-line no-console
-    console.log('sendTemplateMessage::error', data)
-
-  return null
 }
