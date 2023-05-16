@@ -11,7 +11,7 @@ export function getTemplateInfo(access_token: string, templateId: string | numbe
   return getZNSTemplateInfo(access_token, templateId)
 }
 
-export async function getZNSTemplateInfo(access_token: string, templateId: string | number) {
+export function getZNSTemplateInfo(access_token: string, templateId: string | number) {
   return zfetch<ZNSTemplateInfoResponse>('template/info', {
     baseURL,
     params: {
@@ -35,7 +35,7 @@ export function sendTemplateMessage(access_token: string,
   return sendZNSTemplateMessage(access_token, phone, template_id, template_data, tracking_id, production)
 }
 
-export async function sendZNSTemplateMessage(
+export function sendZNSTemplateMessage(
   access_token: string,
   phone: string,
   template_id: string | number,

@@ -3,7 +3,7 @@ import { zfetch } from './zfetch'
 
 const baseURL = 'https://openapi.zalo.me/v2.0/oa/upload'
 
-export async function uploadImage(access_token: string, file: Blob | File) {
+export function uploadImage(access_token: string, file: Blob | File) {
   const data = new FormData()
   data.append('file', file)
 
@@ -15,7 +15,7 @@ export async function uploadImage(access_token: string, file: Blob | File) {
   })
 }
 
-export async function uploadGif(access_token: string, file: Blob | File) {
+export function uploadGif(access_token: string, file: Blob | File) {
   const data = new FormData()
   data.append('file', file)
 
@@ -27,7 +27,7 @@ export async function uploadGif(access_token: string, file: Blob | File) {
   })
 }
 
-export async function uploadFile(access_token: string, file: Blob | File) {
+export function uploadFile(access_token: string, file: Blob | File) {
   const data = new FormData()
   data.append('file', file)
 

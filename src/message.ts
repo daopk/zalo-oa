@@ -4,7 +4,7 @@ import type { SendMessageResponse } from './types/response'
 
 const baseUrlV3 = 'https://openapi.zalo.me/v3.0/oa/message'
 
-export async function sendPromotionMessage(access_token: string, user_id: string, attachment: ZaloOAPromotionTemplate) {
+export function sendPromotionMessage(access_token: string, user_id: string, attachment: ZaloOAPromotionTemplate) {
   const body = {
     recipient: { user_id },
     message: {
@@ -20,7 +20,7 @@ export async function sendPromotionMessage(access_token: string, user_id: string
   })
 }
 
-export async function sendTransactionMessage(access_token: string, user_id: string, attachment: ZaloOATransactionTemplate) {
+export function sendTransactionMessage(access_token: string, user_id: string, attachment: ZaloOATransactionTemplate) {
   const body = {
     recipient: { user_id },
     message: {
@@ -36,7 +36,7 @@ export async function sendTransactionMessage(access_token: string, user_id: stri
   })
 }
 
-export async function sendCSMessage(access_token: string, user_id: string, messageText?: string, attachment?: ZaloOAAttachment, quote_message_id?: string) {
+export function sendCSMessage(access_token: string, user_id: string, messageText?: string, attachment?: ZaloOAAttachment, quote_message_id?: string) {
   const body = {
     recipient: { user_id },
     message: {
