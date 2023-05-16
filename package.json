@@ -9,17 +9,18 @@
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     }
   },
   "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
+    "build": "tsup",
+    "dev": "tsup --watch src",
     "lint": "eslint .",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
@@ -36,7 +37,7 @@
     "eslint": "^8.39.0",
     "https-proxy-agent": "^5.0.1",
     "ohash": "^1.1.2",
-    "typescript": "^5.0.4",
-    "unbuild": "^1.2.1"
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
   }
 }
