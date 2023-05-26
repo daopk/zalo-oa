@@ -1,20 +1,19 @@
 import type { AxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import type { HttpsProxyAgent } from 'https-proxy-agent'
-import createHttpsProxyAgent from 'https-proxy-agent'
+import { HttpsProxyAgent } from 'https-proxy-agent'
 
 let proxyURL = ''
-const proxyMap = new Map<string, HttpsProxyAgent>()
+const proxyMap = new Map<string, HttpsProxyAgent<string>>()
 
 export async function zfetch<T = any>(url: string, config: AxiosRequestConfig = {}) {
-  let httpsAgent: HttpsProxyAgent | undefined
+  let httpsAgent: HttpsProxyAgent<string>
 
   if (proxyURL) {
     if (proxyMap.has(proxyURL)) {
       httpsAgent = proxyMap.get(proxyURL)
     }
     else {
-      httpsAgent = createHttpsProxyAgent(proxyURL)
+      httpsAgent = new HttpsProxyAgent(proxyURL)
       proxyMap.set(proxyURL, httpsAgent)
     }
   }
