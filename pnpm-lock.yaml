@@ -17,6 +17,9 @@ devDependencies:
   eslint:
     specifier: ^8.44.0
     version: 8.44.0
+  form-data:
+    specifier: ^4.0.0
+    version: 4.0.0
   https-proxy-agent:
     specifier: ^7.0.0
     version: 7.0.0
@@ -1163,7 +1166,7 @@ packages:
     dependencies:
       debug: 3.2.7
       is-core-module: 2.12.1
-      resolve: 1.22.3
+      resolve: 1.22.2
     transitivePeerDependencies:
       - supports-color
     dev: true

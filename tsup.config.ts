@@ -8,5 +8,5 @@ export default defineConfig({
   dts: true,
   clean: true,
   minify: true,
-  external: ['axios', 'https-proxy-agent', 'ohash'],
+  external: ['axios', 'https-proxy-agent', 'ohash', 'form-data'],
 })

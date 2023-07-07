@@ -1,3 +1,4 @@
+import FormData from 'form-data'
 import type { ZaloOAResponse } from './types/response'
 import { zfetch } from './zfetch'
 
