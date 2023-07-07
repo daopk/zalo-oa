@@ -1,4 +1,5 @@
-import type { ZaloOAButtonTemplatePayloadElement, ZaloOAFileAttachment, ZaloOAListTemplatePayloadElement, ZaloOAPromotionTemplate, ZaloOAPromotionTemplatePayloadButton, ZaloOAPromotionTemplatePayloadElement, ZaloOATemplateAttachment } from './types/message'
+import type { ZaloOAButtonTemplatePayloadElement, ZaloOAFileAttachment, ZaloOAListTemplatePayloadElement, ZaloOAMediaTemplatePayloadElement, ZaloOAPromotionTemplate, ZaloOAPromotionTemplatePayloadButton, ZaloOAPromotionTemplatePayloadElement, ZaloOATemplateAttachment } from './types/message'
+import { isURL } from './utils'
 
 export function buildStickerTemplate(stickerId: string): ZaloOATemplateAttachment {
   return {
@@ -15,23 +16,22 @@ export function buildStickerTemplate(stickerId: string): ZaloOATemplateAttachmen
   }
 }
 
-export function buildImageTemplate(url: string, media_type?: 'image' | 'gif'): ZaloOATemplateAttachment {
-  if (url) {
-    if (!media_type) {
-      const ext = url.split('.').pop()
-      if (['gif', 'webp'].includes(ext))
-        media_type = 'gif'
+export function buildImageTemplate(urlOrAttachmentId: string, media_type: 'image' | 'gif' = 'image'): ZaloOATemplateAttachment {
+  const element: ZaloOAMediaTemplatePayloadElement = {
+    media_type,
+  }
 
-      else
-        media_type = 'image'
-    }
-    return {
-      type: 'template',
-      payload: {
-        template_type: 'media',
-        elements: [{ media_type, url }],
-      },
-    }
+  if (isURL(urlOrAttachmentId))
+    element.url = urlOrAttachmentId
+  else
+    element.attachment_id = urlOrAttachmentId
+
+  return {
+    type: 'template',
+    payload: {
+      template_type: 'media',
+      elements: [element],
+    },
   }
 }
 

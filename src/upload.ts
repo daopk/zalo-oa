@@ -2,11 +2,14 @@ import FormData from 'form-data'
 import type { ZaloOAResponse } from './types/response'
 import { zfetch } from './zfetch'
 
+// eslint-disable-next-line n/prefer-global/buffer
+type FileType = Blob | File | Buffer
+
 const baseURL = 'https://openapi.zalo.me/v2.0/oa/upload'
 
-export function uploadImage(access_token: string, file: Blob | File) {
+export function uploadImage(access_token: string, file: FileType, filename: string) {
   const data = new FormData()
-  data.append('file', file)
+  data.append('file', file, { filename })
 
   return zfetch<ZaloOAResponse<{ attachment_id: string }>>('image', {
     method: 'POST',
@@ -16,9 +19,9 @@ export function uploadImage(access_token: string, file: Blob | File) {
   })
 }
 
-export function uploadGif(access_token: string, file: Blob | File) {
+export function uploadGif(access_token: string, file: FileType, filename: string) {
   const data = new FormData()
-  data.append('file', file)
+  data.append('file', file, { filename })
 
   return zfetch<ZaloOAResponse<{ attachment_id: string }>>('gif', {
     method: 'POST',
@@ -28,9 +31,9 @@ export function uploadGif(access_token: string, file: Blob | File) {
   })
 }
 
-export function uploadFile(access_token: string, file: Blob | File) {
+export function uploadFile(access_token: string, file: FileType, filename: string) {
   const data = new FormData()
-  data.append('file', file)
+  data.append('file', file, { filename })
 
   return zfetch<ZaloOAResponse<{ token: string }>>('file', {
     method: 'POST',

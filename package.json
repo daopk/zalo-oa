@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@daopk/eslint-config-ts": "^0.3.9",
+    "@types/node": "^20.4.0",
     "axios": "^1.4.0",
     "bumpp": "^9.1.1",
     "eslint": "^8.44.0",
